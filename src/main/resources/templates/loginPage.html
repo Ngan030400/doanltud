@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link th:href="@{main.css}" rel="stylesheet" media="screen" type="text/css"/>
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script th:src="@{https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js}"></script>
+</head>
+<body>
+<h2>Đăng nhập / Đăng ký</h2>
+
+
+<div class="container" id="container">
+  <div class="form-container sign-in-container">
+    <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+      <h1>Đăng nhập</h1>
+      <div class="social-container">
+        <a href="#" class="social"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="social"><i class="fa fa-google-plus"></i></a>
+      </div>
+      <span>Sử dụng tài khoản của bạn</span>
+      <input type='text' name='username' value='' placeholder="Tài khoản">
+      <input type='password' name='password' placeholder="Mật khẩu" />
+      <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <span>Lưu tài khoản của bạn: </span>
+        <input style="width: 20px" type="checkbox" name="remember-me" />
+      </div>
+
+      <input class="submit" name="submit" type="submit" value="Đăng nhập" />
+    </form>
+  </div>
+
+
+  <div class="form-container sign-up-container">
+    <form th:action="@{/sign-up}" method='POST'>
+      <h1>Tạo tài khoản</h1>
+      <div class="social-container">
+        <a href="#" class="social"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="social"><i class="fa fa-google-plus"></i></a>
+      </div>
+      <span>Hoặc sử dùng tài khoản để đăng ký.</span>
+      <input type="text" name="user-account" placeholder="Tài khoản" />
+      <input type="password" name="password" placeholder="Mật khẩu" />
+      <input class="submit" name="submit" type="submit" value="Đăng ký" />
+    </form>
+  </div>
+
+
+
+
+
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Mừng bạn trở lại</h1>
+        <p>Để giữ kết nối với chúng tôi, vui lòng đăng nhập bằng thông tin cá nhân của bạn</p>
+        <button class="ghost" id="signIn">Đăng nhập</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Chào bạn!</h1>
+        <p>Hãy nhập đầy đủ thông tin cá nhân của bạn khi sử dụng.</p>
+        <button class="ghost" id="signUp">Đăng Ký</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<th:block th:if="${message}">
+  <h4 id="message" th:text="${message}"></h4>
+</th:block>
+
+</body>
+<script th:src="@{main.js}"></script>
+
+<script>
+/*  window.onload = function() {
+    var message = document.getElementById('message').textContent;
+    alertErrorMessage(message);
+  };
+
+  function alertErrorMessage(message) {
+    Swal.fire({
+      position: 'middle',
+      icon: 'info',
+      title: 'Thông báo',
+      text: message
+    });
+  }*/
+</script>
+</html>

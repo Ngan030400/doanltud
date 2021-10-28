@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User Info</title>
+</head>
+<body>
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
+
+
+<h2>User Info Page</h2>
+<h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
+<b>This is protected page!</b>
+
+<br/><br/>
+
+<div th:if="${userInfo != null}" th:utext="${userPrincipalToString}"></div>
+
+<p th:text="${userInfo.getUserId()}"></p>
+<p th:text="${userInfo.getUserName()}"></p>
+<p th:text="${userInfo.getUserAccount()}"></p>
+<p th:text="${userInfo.getUserPassword()}"></p>
+<img th:src="@{${'/image/display/'+ userInfo.getUserAccount()}}"
+     class="card img-fluid" style="width:300px" alt=""/>
+
+
+</body>
+
+</html>

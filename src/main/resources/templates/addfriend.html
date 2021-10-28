@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BẠN BÈ</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{add.css}" rel="stylesheet" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="container" style="width: 800px;height:700px" >
+<div id="top">
+    <button type="button"  class="btn btn-info" style="background-color: #2c3e50">
+        <span class="glyphicon glyphicon-home"></span></button>
+    <button type="button"  class="btn btn-info" style="background-color: #2c3e50">
+        <span class="glyphicon glyphicon-user"></span></button>
+    <button type="button"  class="btn btn-info" style="background-color: #2c3e50">
+        <span class="glyphicon glyphicon-earphone"></span></button>
+    <button type="button"  class="btn btn-info" style="background-color: #2c3e50">
+        <span class="glyphicon glyphicon-time"></span> </button>
+    <button type="button"  class="btn btn-info" style="background-color: #2c3e50">
+        <span class="glyphicon glyphicon-cog"></span> </button>
+    <button type="button"  class="btn btn-info" style="background-color: #2c3e50">
+        <span class="glyphicon glyphicon-list"></span></button>
+    <img src="./img/ai-ma-dep-trai-nhu-lee-minho_111413367.jpg" class="img-circle" alt="Cinque Terre" width="70px" height="50px">
+
+</div>
+<ul class="nav nav-tabs" style="background-color: #2c3e50">
+    <li class="active" style="width: 50%"><a data-toggle="tab" href="#menu" style="margin: auto;border: 1px solid rebeccapurple;color:rgb(150, 150, 150)"><strong>Tìm Kiếm Bạn Bè</strong></a></li>
+    <li style="width: 50%"><a data-toggle="tab" href="#menu1" style="margin: auto;border: 1px solid rebeccapurple ;color:rgb(150, 150, 150)"><strong>Danh Sách Lời Mời Kết bạn</strong></a></li>
+</ul>
+<div id="w" style="background-color: gainsboro;">
+    <div class="tab-content">
+
+        <div id="menu" class="tab-pane fade in active">
+            <form th:action="@{/search}" method="get">
+                <input type="text" name="keyword" th:value="${keyword}"  placeholder="Search.....">
+                <input type="submit" value="Search">
+            </form>
+
+            <div>
+                <h4> Search Result for '[[${keyword}]]'</h4>
+            </div>
+ <div class="media" th:each="row: ${searchResult}" style="border-bottom: 1px solid black" >
+                <div class="tt" style="float: left;width: 65%">
+                    <div class="media-left media-middle">
+                        <img th:src="@{${row.userLogo}}" class="media-object" style="width:150px">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading" th:utext="${row.userName}"></h3>
+                        <p th:utext="${row.userContactNumber}"></p>
+                        <p th:utext="${row.userEmail}"></p>
+                    </div></div>
+                    <div class="bt" style="float: right;width: 33%">
+                        <button class="btn btn-info" style="margin-top:35px;background-color:black">add friend</button>
+                        <button class="btn btn-default" style="margin-top:35px">cancel</button>
+                    </div>
+
+            </div>
+
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <h2> Danh Sách Gửi Lời Mời Kết Bạn</h2>
+            <div class="media">
+                <div class="tt">
+                    <div class="media-left media-middle">
+                        <img src="./img/ai-ma-dep-trai-nhu-lee-minho_111413367.jpg" class="media-object" style="width:150px">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Mai Ánh Tuyết</h3>
+                        <p> Cho mình làm quen được k?</p>
+                    </div></div>
+                <div class="bt">
+                    <button class="btn btn-info" style="margin-top:35px ;background-color:black">add</button>
+                    <button class="btn btn-default"  style="margin-top:35px">delete</button>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="tt">
+                    <div class="media-left media-middle">
+                        <img src="./img/hinh-anh-trai-dep-han-quoc.jpg" class="media-object" style="width:150px">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Vũ Văn Phan</h3>
+                        <p>Làm quen nhé !!!!!!!!</p>
+                    </div></div>
+                <div class="bt">
+                    <button class="btn btn-info" style="margin-top:35px;background-color:black">add</button>
+                    <button class="btn btn-default"  style="margin-top:35px">delete</button>
+                </div>
+            </div>
+            <div class="media">
+                <div class="tt">
+                    <div class="media-left media-middle">
+                        <img src="./img/nb-2_WSZS.jpg" class="media-object" style="width:150px">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Trương Hinh Dư</h3>
+                        <p>Alooo bạn ơi .</p>
+                    </div></div>
+                <div class="bt">
+                    <button class="btn btn-info" style="margin-top:35px;background-color:black">add</button>
+                    <button class="btn btn-default"  style="margin-top:35px">delete</button>
+                </div>
+            </div>
+            <div class="media">
+                <div class="tt">
+                    <div class="media-left media-middle">
+                        <img src="./img/profile-khung-trai-dep-ha-noi-dat-95-diem-mon-ngu-van.jpg" class="media-object" style="width:150px">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Hồ Hà</h3>
+                        <p> Kết bạn với mình nhé</p>
+                    </div></div>
+                <div class="bt">
+                    <button class="btn btn-info" style="margin-top:35px;background-color:black">add</button>
+                    <button class="btn btn-default"  style="margin-top:35px">delete</button>
+                </div>
+            </div>
+            <div class="media">
+                <div class="tt">
+                    <div class="media-left media-middle">
+                        <img src="./img/quankun1064944672953574451157347377723221272784552n-1598176839047986668475-1598180650059-1598180650061951434006.jpg" class="media-object" style="width:150px">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Lộc Phan</h3>
+                        <p>Chào.</p>
+                    </div></div>
+                <div class="bt">
+                    <button class="btn btn-info" style="margin-top:35px;background-color:black">add</button>
+                    <button class="btn btn-default"  style="margin-top:35px">delete</button>
+                </div>
+            </div>
+            <div class="media">
+                <div class="tt">
+                    <div class="media-left media-middle">
+                        <img src="./img/tieu-chien-lot-top-nam-my-dep-nhat-the-gioi.jpg.crdownload" class="media-object" style="width:150px">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Xuân Nam</h3>
+                        <p> HI Bạn</p>
+                    </div></div>
+                <div class="bt">
+                    <button class="btn btn-info" style="margin-top:35px;background-color:black">add</button>
+                    <button class="btn btn-default"  style="margin-top:35px">delete</button>
+                </div>
+            </div>
+
+        </div>
+    </div></div>
+</body>
+</html>
